@@ -8,9 +8,9 @@ public class ProducerConsumer {
         Buffer buffer = new Buffer();
         
         Producer producer = new Producer(buffer);
-        producer.start();
-        
         Consumer consumer = new Consumer(buffer);
+        
+        producer.start();
         consumer.start();
     }
     
