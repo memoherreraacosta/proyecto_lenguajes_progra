@@ -46,6 +46,6 @@ Ejecución en diferentes hilos + GUI para entradas/salidas.
 
 ##### ACTUADORES:
 
- - Botón de inicio (limpia las SALIDAS, valida las ENTRADAS, crea los hilos (productores/consumidores) e inicia la ejecución).
+- Botón de inicio (limpia las SALIDAS, valida las ENTRADAS, crea los hilos (productores/consumidores) e inicia la ejecución).
 
 - Botón de paro (detiene/mata los hilos).
