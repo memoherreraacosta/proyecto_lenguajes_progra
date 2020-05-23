@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class Buffer {
     
-    private ArrayList<String> buffer;
+    public ArrayList<String> buffer;
     
     Buffer() {
         this.buffer = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Buffer {
         
         if(this.buffer.isEmpty()) {
             try {
-                wait(1000);
+                wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -30,9 +30,9 @@ public class Buffer {
     }
     
     synchronized void produce(String product) {
-        if(!this.buffer.isEmpty()) {
+        if(this.buffer.size() > 100) {
             try {
-                wait(1000);
+                wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }

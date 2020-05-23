@@ -12,15 +12,19 @@ public class ProducerConsumer {
         frame.pack();
         frame.setVisible(true);
         
-        
         Buffer buffer = new Buffer();
-        int timeout = 1000;
+        // Parameters for producer / consumers
+        int timeout_producer = 50;
+        int timeout_consumer = 150;
+        int nProducers = 1;
+        int nConsumers = 1;
         
-        Producer producer = new Producer(buffer, timeout);
-        Consumer consumer = new Consumer(buffer, timeout);
+        // Run producers
+        for (int i = 0; i < nProducers; i++)
+            (new Producer(buffer,timeout_producer)).start();
         
-        producer.start();
-        consumer.start();
+        // Run consumers
+        for (int i = 0; i < nProducers; i++)
+            (new Consumer(buffer,timeout_consumer)).start();
     }
-    
 }
