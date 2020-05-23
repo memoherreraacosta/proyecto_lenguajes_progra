@@ -30,7 +30,7 @@ public class Buffer {
     }
     
     synchronized void produce(String product) {
-        if(this.buffer.size() > 100) {
+        if(this.buffer.size() >= 100) {
             try {
                 wait();
             } catch (InterruptedException ex) {

@@ -31,11 +31,11 @@ public class Producer extends Thread {
     public void run() {
         System.out.println("Running Producer...");
         String schemeOp;
-        for(int i=0 ; i<5 ; i++) {
+        while(this.isAlive()) {
             schemeOp = this.buildOp();
             this.buffer.produce(schemeOp);
             //System.out.println("Producer produced: " + product);
-            Buffer.print("Producer produced: " + schemeOp);
+            //Buffer.print("Producer produced: " + schemeOp);
             
             try {
                 Thread.sleep(this.timeout);
