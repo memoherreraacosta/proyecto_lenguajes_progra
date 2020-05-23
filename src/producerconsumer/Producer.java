@@ -7,26 +7,38 @@ import java.util.logging.Logger;
 
 public class Producer extends Thread {
     Buffer buffer;
-    
-    Producer(Buffer buffer) {
+    int timeout;
+    Producer(Buffer buffer, int timeout) {
         this.buffer = buffer;
+        this.timeout = timeout;
+    }
+    
+    private String buildOp(){
+        String ops = "+-*/";
+        String nums = "0123456789";
+        long time = System.currentTimeMillis();
+        Random r = new Random(time);
+        
+        char op = ops.charAt(r.nextInt(4));
+        char n1 = nums.charAt(r.nextInt(10));
+        char n2 = nums.charAt(r.nextInt(10));
+        String res = "("+op + " " + n1 + " " + n2 + ")";
+        
+        return res;
     }
     
     @Override
     public void run() {
         System.out.println("Running Producer...");
-        String products = "AEIOU";
-        Random r = new Random(System.currentTimeMillis());
-        char product;
-        
+        String schemeOp;
         for(int i=0 ; i<5 ; i++) {
-            product = products.charAt(r.nextInt(5));
-            this.buffer.produce(product);
+            schemeOp = this.buildOp();
+            this.buffer.produce(schemeOp);
             //System.out.println("Producer produced: " + product);
-            Buffer.print("Producer produced: " + product);
+            Buffer.print("Producer produced: " + schemeOp);
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(this.timeout);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
