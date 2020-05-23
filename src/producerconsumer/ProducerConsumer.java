@@ -2,6 +2,10 @@
 package producerconsumer;
 
 public class ProducerConsumer {
+    
+    Producer[] producers;
+    Consumer[] consumers;
+    Buffer buffer;
 
     public static void main(String[] args) {
         
