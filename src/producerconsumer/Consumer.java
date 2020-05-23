@@ -6,15 +6,17 @@ import java.util.logging.Logger;
 
 public class Consumer extends Thread {
     Buffer buffer;
+    int timeout;
     
-    Consumer(Buffer buffer) {
+    Consumer(Buffer buffer, int timeout) {
         this.buffer = buffer;
+        this.timeout = timeout;
     }
     
     @Override
     public void run() {
         System.out.println("Running Consumer...");
-        char product;
+        String product;
         
         for(int i=0 ; i<5 ; i++) {
             product = this.buffer.consume();
@@ -22,7 +24,7 @@ public class Consumer extends Thread {
             Buffer.print("Consumer consumed: " + product);
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(this.timeout);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }

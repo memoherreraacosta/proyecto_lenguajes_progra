@@ -1,43 +1,43 @@
 
 package producerconsumer;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Buffer {
     
-    private char buffer;
+    private ArrayList<String> buffer;
     
     Buffer() {
-        this.buffer = 0;
+        this.buffer = new ArrayList<>();
     }
     
-    synchronized char consume() {
-        char product = 0;
+    synchronized String consume() {
+        String product;
         
-        if(this.buffer == 0) {
+        if(this.buffer.isEmpty()) {
             try {
                 wait(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        product = this.buffer;
-        this.buffer = 0;
+        product = this.buffer.remove(this.buffer.size() - 1);
         notify();
         
         return product;
     }
     
-    synchronized void produce(char product) {
-        if(this.buffer != 0) {
+    synchronized void produce(String product) {
+        if(!this.buffer.isEmpty()) {
             try {
                 wait(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        this.buffer = product;
+        this.buffer.add(product);
         
         notify();
     }
