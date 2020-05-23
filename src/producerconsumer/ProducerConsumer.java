@@ -3,12 +3,7 @@ package producerconsumer;
 
 public class ProducerConsumer {
     
-    Producer[] producers;
-    Consumer[] consumers;
-    Buffer buffer;
-
     public static void main(String[] args) {
-        
         
         GUIFrame frame = new GUIFrame();
         frame.setLocationRelativeTo(null);
@@ -31,4 +26,5 @@ public class ProducerConsumer {
         for (int i = 0; i < nProducers; i++)
             (new Consumer(buffer,timeout_consumer)).start();
     }
+    
 }
