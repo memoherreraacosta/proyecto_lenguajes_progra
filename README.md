@@ -26,7 +26,7 @@ Ejecución en diferentes hilos + GUI para entradas/salidas.
 
 - Número consumidores (1 - 10).
 
-- Tiempo de espera (0 ms a 10,000 ms) para productor/consumidor antes de su siguiente ciclo.
+- Tiempo de espera (1 ms a 10,000 ms) para productor/consumidor antes de su siguiente ciclo.
 
 - Tamaño del buffer (1 - 100).
 
