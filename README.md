@@ -2,8 +2,11 @@
 
 ## Materia: Lenguajes de programación
 
-## Equipo: Los Peruanos :&#127477;&#127466:
+## Equipo: Los Peruanos 🇵🇪
 
+![Peru](file/peru.jpg)
+
+##
 - [Guillermo Herrera](https://github.com/memoherreraacosta/) A01400835
 
 - [Juan Quirino](https://github.com/QuirinoC) A01632369
