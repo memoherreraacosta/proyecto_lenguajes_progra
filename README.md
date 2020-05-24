@@ -4,15 +4,15 @@
 
 ## Equipo: Los Peruanos
 
-- Guillermo Herrera A01400835
+- [Guillermo Herrera](https://github.com/memoherreraacosta/) A01400835
 
-- Juan Quirino A01632369
+- [Juan Quirino](https://github.com/QuirinoC) A01632369
 
-- Ricardo Espinoza A01229141
+- [Ricardo Espinoza](https://github.com/Ricardope3) A01229141
 
-- Ángel Cedeño A00344367
+- [Angel Cede�o](https://github.com/Angeljcc102) A0034436
 
-- Juan Melendres A00369017
+- [Juan Melendres](https://github.com/JuanMelendres) A00369017
 
 ## Descripcion del proyecto
 
