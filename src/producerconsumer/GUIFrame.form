@@ -188,12 +188,11 @@
                 <Component class="javax.swing.JSpinner" name="m_value">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.SpinnerNumberModel(1, 0, 9, 1)" type="code"/>
+                      <Connection code="new javax.swing.SpinnerNumberModel(9, 0, 9, 1)" type="code"/>
                     </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="m_value.setEditor(new javax.swing.JSpinner.DefaultEditor(m_value));"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="productores_label">
@@ -208,13 +207,15 @@
                 </Component>
                 <Component class="javax.swing.JSpinner" name="productor_cantidad_spinner">
                   <Properties>
-                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.SpinnerNumberModel(1, 1, 10, 1)" type="code"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="1" maximum="10" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor Por defecto"/>
                     </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="productor_cantidad_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(productor_cantidad_spinner));"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="consumidor_cantidad_spinner">
@@ -225,7 +226,6 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="consumidor_cantidad_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(consumidor_cantidad_spinner));"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="tamano_buffer_label">
@@ -241,23 +241,21 @@
                 <Component class="javax.swing.JSpinner" name="n_value">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.SpinnerNumberModel(1, 0, 9, 1)" type="code"/>
+                      <Connection code="new javax.swing.SpinnerNumberModel(0, 0, 9, 1)" type="code"/>
                     </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="n_value.setEditor(new javax.swing.JSpinner.DefaultEditor(n_value));"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="tamano_buffer_spinner">
                   <Properties>
-                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.SpinnerNumberModel(1, 1, 100, 1)" type="code"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="10" maximum="10000" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
                     </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tamano_buffer_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(tamano_buffer_spinner));"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -388,8 +386,7 @@
             <EtchetBorder/>
           </Border>
         </Property>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
-        <Property name="selected" type="boolean" value="true"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_stopActionPerformed"/>
