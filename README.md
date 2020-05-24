@@ -2,7 +2,7 @@
 
 ## Materia: Lenguajes de programación
 
-## Equipo: Los Peruanos
+## Equipo: Los Peruanos :604:
 
 - [Guillermo Herrera](https://github.com/memoherreraacosta/) A01400835
 
