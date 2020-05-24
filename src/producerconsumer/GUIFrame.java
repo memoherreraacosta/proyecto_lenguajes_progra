@@ -351,11 +351,31 @@ public class GUIFrame extends javax.swing.JFrame {
     }
     
     public int getEsperaProductor() throws NumberFormatException {
-        return Integer.parseInt(productor_tiempo_espera.getText());
+        try{
+            num = Integer.parseInt(productor_tiempo_espera.getText());
+            if (num >= 0 && num <= 10000){
+                return num;
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "ProductorNumberIncorrectError", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e){ 
+            JOptionPane.showMessageDialog(this, "Error: Not a number!", "ProductorNotNumberError", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public int getEsperaConsumidor() throws NumberFormatException {
-        return Integer.parseInt(consumidor_tiempo_espera.getText());
+        try{
+            num = Integer.parseInt(consumidor_tiempo_espera.getText());
+            if (num >= 0 && num <= 10000){
+                return num;
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "ProductorNumberIncorrectError", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e){ 
+            JOptionPane.showMessageDialog(this, "Error: Not a number!", "ProductorNotNumberError", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public int getTamanoBuffer() throws NumberFormatException {
