@@ -2,8 +2,11 @@
 
 ## Materia: Lenguajes de programación
 
-## Equipo: Los Peruanos
+## Equipo: Los Peruanos 🇵🇪
 
+![Peru](file/peru.jpg)
+
+##
 - [Guillermo Herrera](https://github.com/memoherreraacosta/) A01400835
 
 - [Juan Quirino](https://github.com/QuirinoC) A01632369
@@ -26,7 +29,7 @@ Ejecución en diferentes hilos + GUI para entradas/salidas.
 
 - Número consumidores (1 - 10).
 
-- Tiempo de espera (0 ms a 10,000 ms) para productor/consumidor antes de su siguiente ciclo.
+- Tiempo de espera (1 ms a 10,000 ms) para productor/consumidor antes de su siguiente ciclo.
 
 - Tamaño del buffer (1 - 100).
 
