@@ -10,7 +10,7 @@
 
 - [Ricardo Espinoza](https://github.com/Ricardope3) A01229141
 
-- [Angel Cede√±](https://github.com/Angeljcc102) A0034436
+- [Angel Cede√o](https://github.com/Angeljcc102) A0034436
 
 - [Juan Melendres](https://github.com/JuanMelendres) A00369017
 
