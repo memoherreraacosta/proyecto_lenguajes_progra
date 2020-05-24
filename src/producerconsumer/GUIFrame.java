@@ -71,28 +71,24 @@ public class GUIFrame extends javax.swing.JFrame {
 
         rango_val_label.setText("Rango de Valores (n, m)");
 
-        m_value.setEditor(new javax.swing.JSpinner.DefaultEditor(m_value));
-        m_value.setModel(new javax.swing.SpinnerNumberModel(1, 0, 9, 1));
+        m_value.setModel(new javax.swing.SpinnerNumberModel(9, 0, 9, 1));
 
         productores_label.setText("Productores");
 
         consumidores_label.setText("Consumidores");
 
-        productor_cantidad_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(productor_cantidad_spinner));
         productor_cantidad_spinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        productor_cantidad_spinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        consumidor_cantidad_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(consumidor_cantidad_spinner));
         consumidor_cantidad_spinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
 
         tamano_buffer_label.setText("Tamaño del Buffer");
 
         cantidad_label.setText("Cantidad");
 
-        n_value.setEditor(new javax.swing.JSpinner.DefaultEditor(n_value));
-        n_value.setModel(new javax.swing.SpinnerNumberModel(1, 0, 9, 1));
+        n_value.setModel(new javax.swing.SpinnerNumberModel(0, 0, 9, 1));
 
-        tamano_buffer_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(tamano_buffer_spinner));
-        tamano_buffer_spinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        tamano_buffer_spinner.setModel(new javax.swing.SpinnerNumberModel(10, 1, 10000, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -248,8 +244,7 @@ public class GUIFrame extends javax.swing.JFrame {
         button_stop.setForeground(new java.awt.Color(0, 102, 51));
         button_stop.setText("DETENER");
         button_stop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        button_stop.setContentAreaFilled(false);
-        button_stop.setSelected(true);
+        button_stop.setEnabled(false);
         button_stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_stopActionPerformed(evt);
@@ -299,12 +294,16 @@ public class GUIFrame extends javax.swing.JFrame {
     private void button_stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_stopActionPerformed
         // TODO add your handling code here:
         System.out.println("parar");
+        button_init.setEnabled(true);
+        button_stop.setEnabled(false);
         this.state = -1;
     }//GEN-LAST:event_button_stopActionPerformed
 
     private void button_initActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_initActionPerformed
         // TODO add your handling code here:
         System.out.println("iniciar");
+        button_init.setEnabled(false);
+        button_stop.setEnabled(true);
         this.state = 1;
     }//GEN-LAST:event_button_initActionPerformed
 
@@ -344,35 +343,51 @@ public class GUIFrame extends javax.swing.JFrame {
     }
     
     public int getProductores() throws NumberFormatException{
-        return Integer.parseInt(productor_cantidad_spinner.getValue().toString());
+        return (int)productor_cantidad_spinner.getValue();
     }
     
     public int getConsumidores() throws NumberFormatException{
-        return Integer.parseInt(consumidor_cantidad_spinner.getValue().toString());
+        return (int)consumidor_cantidad_spinner.getValue();
     }
     
     public int getEsperaProductor() throws NumberFormatException {
-        return Integer.parseInt(productor_tiempo_espera.getText().toString());
+        return Integer.parseInt(productor_tiempo_espera.getText());
     }
     
     public int getEsperaConsumidor() throws NumberFormatException {
-        return Integer.parseInt(consumidor_tiempo_espera.getText().toString());
+        return Integer.parseInt(consumidor_tiempo_espera.getText());
     }
     
     public int getTamanoBuffer() throws NumberFormatException {
-        return Integer.parseInt(tamano_buffer_spinner.getValue().toString());
+        return (int)tamano_buffer_spinner.getValue();
     }
     
     public int get_m_value() throws NumberFormatException{
-        return Integer.parseInt(m_value.getValue().toString());
+        return (int)m_value.getValue();
     }
     
     public int get_n_value() throws NumberFormatException{
-        return Integer.parseInt(n_value.getValue().toString());
+        return (int)n_value.getValue();
     }
     
     public int get_state(){
         return this.state;
+    }
+    
+    public void set_state(int state){
+        this.state = state;
+        button_init.setEnabled(true);
+        button_stop.setEnabled(false);
+    }
+    
+    public void set_enabled(boolean flag){
+            consumidor_cantidad_spinner.setEnabled(flag);
+            consumidor_tiempo_espera.setEnabled(flag);
+            m_value.setEnabled(flag);
+            n_value.setEnabled(flag);
+            productor_cantidad_spinner.setEnabled(flag);
+            productor_tiempo_espera.setEnabled(flag);
+            tamano_buffer_spinner.setEnabled(flag);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
