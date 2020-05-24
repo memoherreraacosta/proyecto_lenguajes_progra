@@ -19,7 +19,7 @@ import javax.swing.event.MouseInputListener;
 
 public class GUIFrame extends javax.swing.JFrame {
     
-    public boolean ready = false;
+    public int state = 0;
     /**
      * Creates new form GUIFrame
      */
@@ -299,13 +299,13 @@ public class GUIFrame extends javax.swing.JFrame {
     private void button_stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_stopActionPerformed
         // TODO add your handling code here:
         System.out.println("parar");
-        this.ready = false;
+        this.state = -1;
     }//GEN-LAST:event_button_stopActionPerformed
 
     private void button_initActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_initActionPerformed
         // TODO add your handling code here:
         System.out.println("iniciar");
-        this.ready = true;
+        this.state = 1;
     }//GEN-LAST:event_button_initActionPerformed
 
     /**
@@ -371,8 +371,8 @@ public class GUIFrame extends javax.swing.JFrame {
         return Integer.parseInt(n_value.getValue().toString());
     }
     
-    public boolean get_ready(){
-        return this.ready;
+    public int get_state(){
+        return this.state;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

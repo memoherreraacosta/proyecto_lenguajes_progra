@@ -13,30 +13,46 @@ public class ProducerConsumer {
         return frame;
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         
         GUIFrame frame = ProducerConsumer.get_frame();
         boolean panel_running = true;
-        /*
+
         while(panel_running){
-            if frame.get_ready(){
+            /*
+            Get state has 3 values
+                -1: Stop
+                 0: Waiting to fill data
+                 1: To calculus
+            */
+            if (frame.get_state() == 1){
+                Buffer buffer = new Buffer();
+                // Parameters for producer / consumers
+                int timeout_producer = frame.getEsperaProductor();
+                int timeout_consumer = frame.getEsperaConsumidor();
+                int nProducers = frame.getProductores();
+                int nConsumers = frame.getConsumidores();
+                int n = frame.get_n_value();
+                int m = frame.get_m_value();
                 
+                // Run producers
+                for (int i = 0; i < nProducers; i++)
+                    (new Producer(buffer,timeout_producer)).start();
+        
+                // Run consumers
+                for (int i = 0; i < nConsumers; i++)
+                    (new Consumer(buffer,timeout_consumer)).start();
+                
+                // Break loop
+                panel_running = !panel_running;
             }
-        }*/
-        
-        Buffer buffer = new Buffer();
-        // Parameters for producer / consumers
-        int timeout_producer = 50;
-        int timeout_consumer = 150;
-        int nProducers = 1;
-        int nConsumers = 1;
-        
-        // Run producers
-        for (int i = 0; i < nProducers; i++)
-            (new Producer(buffer,timeout_producer)).start();
-        
-        // Run consumers
-        for (int i = 0; i < nConsumers; i++)
-            (new Consumer(buffer,timeout_consumer)).start();
+            if (frame.get_state() == -1){
+                // Stop and close
+                frame.setVisible(false); //you can't see me!
+                frame.dispose(); //Destroy the JFrame object
+                panel_running = !panel_running;
+            }
+            Thread.sleep(1000);
+        }
     }
 }
