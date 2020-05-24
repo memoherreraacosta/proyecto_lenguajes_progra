@@ -389,6 +389,50 @@ public class GUIFrame extends javax.swing.JFrame {
             productor_tiempo_espera.setEnabled(flag);
             tamano_buffer_spinner.setEnabled(flag);
     }
+
+    private boolean isAcepted() {
+        boolean resultProd;
+        boolean resultCons;
+
+        Integer num;
+        String text;
+
+        JTextField productores = productor_tiempo_espera;
+        JTextField consumidores = consumidor_tiempo_espera;
+
+        text = productores.getText();
+                          
+        try{
+            num = Integer.parseInt((String) text);
+            if (num >= 0 && num <= 10000){
+                resultProd = true;
+            }else{
+                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "ProductorNumberIncorrectError", JOptionPane.ERROR_MESSAGE);
+                resultProd = false;
+            }
+        } catch (NumberFormatException e){ 
+            JOptionPane.showMessageDialog(this, "Error: Not a number!", "ProductorNotNumberError", JOptionPane.ERROR_MESSAGE);
+            resultProd = false;
+        }
+
+        text = consumidores.getText();
+                          
+        try{
+            num = Integer.parseInt((String) text);
+            if (num >= 0 && num <= 10000){
+                resultProd = true;
+            }else{
+                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "ConsumidorNumberIncorrectError", JOptionPane.ERROR_MESSAGE);
+                resultProd = false;
+            }
+        } catch (NumberFormatException e){ 
+            JOptionPane.showMessageDialog(this, "Error: Not a number!", "ConsumidorNotNumberError", JOptionPane.ERROR_MESSAGE);
+            resultProd = false;
+        }
+
+        return resultProd && resultCons;
+
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_init;
