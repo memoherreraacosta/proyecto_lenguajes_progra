@@ -351,31 +351,11 @@ public class GUIFrame extends javax.swing.JFrame {
     }
     
     public int getEsperaProductor() throws NumberFormatException {
-        try{
-            num = Integer.parseInt(productor_tiempo_espera.getText());
-            if (num >= 0 && num <= 10000){
-                return num;
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "ProductorNumberIncorrectError", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (NumberFormatException e){ 
-            JOptionPane.showMessageDialog(this, "Error: Not a number!", "ProductorNotNumberError", JOptionPane.ERROR_MESSAGE);
-        }
+       return validar(productor_tiempo_espera.getText());
     }
     
     public int getEsperaConsumidor() throws NumberFormatException {
-        try{
-            num = Integer.parseInt(consumidor_tiempo_espera.getText());
-            if (num >= 0 && num <= 10000){
-                return num;
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "ProductorNumberIncorrectError", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (NumberFormatException e){ 
-            JOptionPane.showMessageDialog(this, "Error: Not a number!", "ProductorNotNumberError", JOptionPane.ERROR_MESSAGE);
-        }
+        return validar(consumidor_tiempo_espera.getText());
     }
     
     public int getTamanoBuffer() throws NumberFormatException {
@@ -408,6 +388,20 @@ public class GUIFrame extends javax.swing.JFrame {
             productor_cantidad_spinner.setEnabled(flag);
             productor_tiempo_espera.setEnabled(flag);
             tamano_buffer_spinner.setEnabled(flag);
+    }
+
+    public int validar(String number) throws NumberFormatException {
+        try{
+            num = Integer.parseInt(number);
+            if (num >= 0 && num <= 10000){
+                return num;
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "NumberIncorrectError", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e){ 
+            JOptionPane.showMessageDialog(this, "Error: Not a number!", "NotNumberError", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private boolean isAcepted() {
