@@ -1,35 +1,82 @@
-
 package producerconsumer;
 
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 public class ProducerConsumer {
-    
-    private static GUIFrame get_frame(){
+
+    private static GUIFrame get_frame() {
         GUIFrame frame = new GUIFrame();
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
-        
+
         return frame;
     }
     
-    public static void main(String[] args) throws InterruptedException {
-        
+    private static void call_pane(String text){
+        JOptionPane.showMessageDialog(
+            null,
+            text
+        );
+    }
+
+    private static void stop(
+                            ArrayList<Producer> producers,
+                            ArrayList<Consumer> consumers)
+    { 
+        while (!producers.isEmpty()) {
+            producers.get(0).stop();
+            producers.remove(0);
+        }
+        while (!consumers.isEmpty()) {
+            consumers.get(0).stop();
+            consumers.remove(0);
+            
+        }
+    }
+    
+    private static void start(
+                            ArrayList<Producer> producers,
+                            ArrayList<Consumer> consumers,
+                            Buffer buffer,
+                            int nProd,
+                            int nCons,
+                            int timeoutP,
+                            int timeoutC)
+    {
+        Producer producer;
+        Consumer consumer;
+        for (int i = 0; i < nProd; i++) {
+            producer = new Producer(buffer, timeoutP);
+            producers.add(producer);
+            producer.start();
+            
+        }
+        for (int i = 0; i < nCons; i++) {
+            consumer = new Consumer(buffer, timeoutC);
+            consumers.add(consumer);
+            consumer.start();
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException{
+
         GUIFrame frame = ProducerConsumer.get_frame();
         boolean panel_running = true;
-
-        while(panel_running){
+        ArrayList<Producer> producers = new ArrayList<>();
+        ArrayList<Consumer> consumers = new ArrayList<>();
+        
+        while (panel_running) {
             /*
             Get state has 3 values
                 -1: Stop
                  0: Waiting to fill data
                  1: To calculus
-            */
-            
-            if (frame.get_state() == 1){
-                try{
+             */
+            if (frame.getState() == 1) {
+                try {
                     Buffer buffer = new Buffer();
                     // Parameters for producer / consumers
                     int timeout_producer = frame.getEsperaProductor();
@@ -39,31 +86,48 @@ public class ProducerConsumer {
                     int n = frame.get_n_value();
                     int m = frame.get_m_value();
                     
-                    frame.set_enabled(false);
-                    // Run producers
-                    for (int i = 0; i < nProducers; i++)
-                        (new Producer(buffer,timeout_producer)).start();
-
-                    // Run consumers
-                    for (int i = 0; i < nConsumers; i++)
-                        (new Consumer(buffer,timeout_consumer)).start();
-
-                    // Break loop
-                    panel_running = !panel_running;
-                } catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "Error al introducir un número invalido");
-                    frame.setEnabled(true);
-                    frame.set_state(0);
+                    
+                    if (n > m) {
+                        call_pane("N debe de ser menor o igual que M");
+                        frame.setState(0);
+                    }
+                    /*
+                        The state can change while validating the input data
+                    */
+                    if (frame.getState() == 1){
+                            // Run threads
+                        start(
+                            producers,
+                            consumers,
+                            buffer,
+                            nProducers,
+                            nConsumers,
+                            timeout_producer,
+                            timeout_consumer
+                        );
+                        panel_running = !panel_running;
+                    }
+                } catch (NumberFormatException e) {
+                    call_pane("Error al introducir un número invalido: " + e);
+                    frame.setState(0);
+                } catch (Exception ex) {
+                    call_pane("WTF: " + ex);
+                    frame.setState(0);
                 }
             }
-            if (frame.get_state() == -1){
+            if (frame.getState() == -1) {
                 // Stop and close
-                frame.setVisible(false); //you can't see me!
-                frame.dispose(); //Destroy the JFrame object
+                stop(
+                    producers,
+                    consumers
+                );
+                frame.setVisible(false);
+                frame.dispose();
                 panel_running = !panel_running;
+                call_pane("Process finished");
             }
-            Thread.sleep(1000);
+            Thread.sleep(200);
         }
     }
-    
+
 }

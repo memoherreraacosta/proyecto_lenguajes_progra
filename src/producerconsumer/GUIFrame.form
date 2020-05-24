@@ -30,9 +30,9 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="button_init" min="-2" pref="230" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="button_stop" min="-2" pref="230" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -85,50 +85,58 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="n_value" min="-2" pref="109" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="consumidores_label" min="-2" pref="99" max="-2" attributes="0"/>
-                                              <Component id="productores_label" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="consumidor_cantidad_spinner" max="32767" attributes="0"/>
-                                              <Component id="productor_cantidad_spinner" max="32767" attributes="0"/>
-                                              <Component id="cantidad_label" pref="86" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                          <Component id="n_value" min="-2" pref="109" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="tamano_buffer_spinner" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                                      <Component id="productores_label" min="-2" pref="129" max="-2" attributes="0"/>
+                                      <Component id="consumidores_label" min="-2" pref="143" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="tiempo_de_espera_label" max="32767" attributes="0"/>
-                                      <Component id="productor_tiempo_espera" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="consumidor_tiempo_espera" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="m_value" min="-2" pref="109" max="-2" attributes="0"/>
-                                      </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="productor_cantidad_spinner" min="-2" pref="86" max="-2" attributes="0"/>
+                                      <Component id="consumidor_cantidad_spinner" min="-2" pref="86" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                                  <Component id="rango_val_label" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                  <Component id="m_value" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="consumidor_tiempo_espera" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <Component id="productor_tiempo_espera" min="-2" pref="111" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tamano_buffer_label" min="-2" pref="192" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="tamano_buffer_spinner" min="-2" pref="86" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+                          <Component id="cantidad_label" min="-2" pref="86" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tiempo_de_espera_label" pref="261" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="tamano_buffer_label" min="-2" pref="115" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                          <Component id="rango_val_label" min="-2" pref="230" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -137,13 +145,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tiempo_de_espera_label" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                               <Component id="cantidad_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tiempo_de_espera_label" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="productor_cantidad_spinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="productor_cantidad_spinner" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="productor_tiempo_espera" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="productores_label" min="-2" max="-2" attributes="0"/>
@@ -154,14 +162,14 @@
                               <Component id="consumidor_cantidad_spinner" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="consumidor_tiempo_espera" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="tamano_buffer_label" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tamano_buffer_spinner" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
                           <Component id="rango_val_label" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="16" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="n_value" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="m_value" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -173,16 +181,25 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="tiempo_de_espera_label">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tiempo de Espera (ms)"/>
+                    <Property name="text" type="java.lang.String" value="Tiempo de Espera (ms): 1 a 10000ms"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel()"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="productor_tiempo_espera">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="productor_tiempo_espera.setText(&quot;100&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="consumidor_tiempo_espera">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="consumidor_tiempo_espera.setText(&quot;100&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="rango_val_label">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Rango de Valores (n, m)"/>
+                    <Property name="text" type="java.lang.String" value="Rango de Valores (n, m) | n &lt;= m"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="m_value">
@@ -193,25 +210,26 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="m_value.setEditor(new javax.swing.JSpinner.DefaultEditor(m_value));"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="productores_label">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Productores"/>
+                    <Property name="text" type="java.lang.String" value="Productores [1-10]"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="consumidores_label">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Consumidores"/>
+                    <Property name="text" type="java.lang.String" value="Consumidores [1-10]"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="productor_cantidad_spinner">
                   <Properties>
-                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="1" maximum="10" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="productor_cantidad_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(productor_cantidad_spinner));">
+                      <Connection code="new javax.swing.SpinnerNumberModel(1, 1, 10, 1)" type="code"/>
                     </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Por defecto"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR)" type="code"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -226,11 +244,12 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="consumidor_cantidad_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(consumidor_cantidad_spinner));"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="tamano_buffer_label">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tama&#xf1;o del Buffer"/>
+                    <Property name="text" type="java.lang.String" value="Tama&#xf1;o del Buffer (1-100)"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="cantidad_label">
@@ -246,12 +265,13 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="n_value.setEditor(new javax.swing.JSpinner.DefaultEditor(n_value));"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="tamano_buffer_spinner">
                   <Properties>
-                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="10" maximum="10000" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new javax.swing.SpinnerNumberModel(10, 1, 100, 1)" type="code"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -287,7 +307,7 @@
                           <Component id="jLabel8" pref="185" max="32767" attributes="0"/>
                           <Component id="n_value_spinner" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace pref="114" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

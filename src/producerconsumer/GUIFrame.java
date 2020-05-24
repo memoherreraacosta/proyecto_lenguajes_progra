@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
 
 
-
 public class GUIFrame extends javax.swing.JFrame {
     
     public int state = 0;
@@ -67,75 +66,90 @@ public class GUIFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Final Project Peruanos");
 
-        tiempo_de_espera_label.setText("Tiempo de Espera (ms)");
+        tiempo_de_espera_label.setText("Tiempo de Espera (ms): 1 a 10000ms");
 
-        rango_val_label.setText("Rango de Valores (n, m)");
+        productor_tiempo_espera.setText("100");
+
+        consumidor_tiempo_espera.setText("100");
+
+        rango_val_label.setText("Rango de Valores (n, m) | n <= m");
 
         m_value.setModel(new javax.swing.SpinnerNumberModel(9, 0, 9, 1));
+        m_value.setEditor(new javax.swing.JSpinner.DefaultEditor(m_value));
 
-        productores_label.setText("Productores");
+        productores_label.setText("Productores [1-10]");
 
-        consumidores_label.setText("Consumidores");
+        consumidores_label.setText("Consumidores [1-10]");
 
         productor_cantidad_spinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        productor_cantidad_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(productor_cantidad_spinner));
         productor_cantidad_spinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         consumidor_cantidad_spinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        consumidor_cantidad_spinner.setEditor(new javax.swing.JSpinner.DefaultEditor(consumidor_cantidad_spinner));
 
-        tamano_buffer_label.setText("Tamaño del Buffer");
+        tamano_buffer_label.setText("Tamaño del Buffer (1-100)");
 
         cantidad_label.setText("Cantidad");
 
         n_value.setModel(new javax.swing.SpinnerNumberModel(0, 0, 9, 1));
+        n_value.setEditor(new javax.swing.JSpinner.DefaultEditor(n_value));
 
-        tamano_buffer_spinner.setModel(new javax.swing.SpinnerNumberModel(10, 1, 10000, 1));
+        tamano_buffer_spinner.setModel(new javax.swing.SpinnerNumberModel(10, 1, 100, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(consumidores_label, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(productores_label, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(consumidor_cantidad_spinner)
-                                    .addComponent(productor_cantidad_spinner)
-                                    .addComponent(cantidad_label, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(n_value, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tamano_buffer_spinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tiempo_de_espera_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(productor_tiempo_espera)
-                            .addComponent(consumidor_tiempo_espera)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(m_value, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(56, 56, 56)
+                        .addComponent(n_value, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(rango_val_label)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(productores_label, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(consumidores_label, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(productor_cantidad_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(consumidor_cantidad_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(m_value, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(consumidor_tiempo_espera, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(productor_tiempo_espera, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(tamano_buffer_label, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(tamano_buffer_label, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(tamano_buffer_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(cantidad_label, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tiempo_de_espera_label, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(rango_val_label, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cantidad_label)
-                    .addComponent(tiempo_de_espera_label))
-                .addGap(18, 18, 18)
+                    .addComponent(tiempo_de_espera_label, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidad_label))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(productor_cantidad_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,13 +160,13 @@ public class GUIFrame extends javax.swing.JFrame {
                     .addComponent(consumidores_label)
                     .addComponent(consumidor_cantidad_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(consumidor_tiempo_espera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tamano_buffer_label)
                     .addComponent(tamano_buffer_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(rango_val_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(n_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(m_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -218,7 +232,7 @@ public class GUIFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .addComponent(n_value_spinner))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,9 +284,9 @@ public class GUIFrame extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(button_init, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(button_stop, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -294,17 +308,13 @@ public class GUIFrame extends javax.swing.JFrame {
     private void button_stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_stopActionPerformed
         // TODO add your handling code here:
         System.out.println("parar");
-        button_init.setEnabled(true);
-        button_stop.setEnabled(false);
-        this.state = -1;
+        this.setState(-1);
     }//GEN-LAST:event_button_stopActionPerformed
 
     private void button_initActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_initActionPerformed
         // TODO add your handling code here:
         System.out.println("iniciar");
-        button_init.setEnabled(false);
-        button_stop.setEnabled(true);
-        this.state = 1;
+        this.setState(1);
     }//GEN-LAST:event_button_initActionPerformed
 
     /**
@@ -351,15 +361,15 @@ public class GUIFrame extends javax.swing.JFrame {
     }
     
     public int getEsperaProductor() throws NumberFormatException {
-       return validar(productor_tiempo_espera.getText());
+       return validar(productor_tiempo_espera.getText(), 10000);
     }
     
     public int getEsperaConsumidor() throws NumberFormatException {
-        return validar(consumidor_tiempo_espera.getText());
+        return validar(consumidor_tiempo_espera.getText(), 10000);
     }
     
     public int getTamanoBuffer() throws NumberFormatException {
-        return (int)tamano_buffer_spinner.getValue();
+        return validar(tamano_buffer_spinner.getValue().toString(), 100);
     }
     
     public int get_m_value() throws NumberFormatException{
@@ -370,82 +380,50 @@ public class GUIFrame extends javax.swing.JFrame {
         return (int)n_value.getValue();
     }
     
-    public int get_state(){
+    public int getState(){
         return this.state;
     }
     
-    public void set_state(int state){
+    public void setState(int state){
         this.state = state;
-        button_init.setEnabled(true);
-        button_stop.setEnabled(false);
+        button_init.setEnabled(state == 0);
+        button_stop.setEnabled(!(state == 0));
+        this.setEnabled(state == 0);
     }
     
-    public void set_enabled(boolean flag){
-            consumidor_cantidad_spinner.setEnabled(flag);
-            consumidor_tiempo_espera.setEnabled(flag);
-            m_value.setEnabled(flag);
-            n_value.setEnabled(flag);
-            productor_cantidad_spinner.setEnabled(flag);
-            productor_tiempo_espera.setEnabled(flag);
-            tamano_buffer_spinner.setEnabled(flag);
+    public void setEnabled(boolean flag){
+        consumidor_cantidad_spinner.setEnabled(flag);
+        consumidor_tiempo_espera.setEnabled(flag);
+        m_value.setEnabled(flag);
+        n_value.setEnabled(flag);
+        productor_cantidad_spinner.setEnabled(flag);
+        productor_tiempo_espera.setEnabled(flag);
+        tamano_buffer_spinner.setEnabled(flag);
     }
 
-    public int validar(String number) throws NumberFormatException {
+    public int validar(String number, int limit) throws NumberFormatException {
+        int num = 0;
         try{
             num = Integer.parseInt(number);
-            if (num >= 0 && num <= 10000){
-                return num;
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "NumberIncorrectError", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (NumberFormatException e){ 
-            JOptionPane.showMessageDialog(this, "Error: Not a number!", "NotNumberError", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private boolean isAcepted() {
-        boolean resultProd;
-        boolean resultCons;
-
-        Integer num;
-        String text;
-
-        JTextField productores = productor_tiempo_espera;
-        JTextField consumidores = consumidor_tiempo_espera;
-
-        text = productores.getText();
-                          
-        try{
-            num = Integer.parseInt((String) text);
-            if (num >= 0 && num <= 10000){
-                resultProd = true;
-            }else{
-                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "ProductorNumberIncorrectError", JOptionPane.ERROR_MESSAGE);
-                resultProd = false;
+            if (!(num > 0 && num <= limit)){
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Error: El numero no esta en el rango solicitado\n Hint:\n1-"+limit,
+                    "NumberIncorrectError",
+                    JOptionPane.ERROR_MESSAGE
+                );
+                this.setState(0);
             }
         } catch (NumberFormatException e){ 
-            JOptionPane.showMessageDialog(this, "Error: Not a number!", "ProductorNotNumberError", JOptionPane.ERROR_MESSAGE);
-            resultProd = false;
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Error: El tiempo de espera debe ser numero entero positivo!",
+                    "NotNumberError",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            this.setState(0);
         }
-
-        text = consumidores.getText();
-                          
-        try{
-            num = Integer.parseInt((String) text);
-            if (num >= 0 && num <= 10000){
-                resultProd = true;
-            }else{
-                JOptionPane.showMessageDialog(this, "Error: Number not within range\n Hint:\n0-10000", "ConsumidorNumberIncorrectError", JOptionPane.ERROR_MESSAGE);
-                resultProd = false;
-            }
-        } catch (NumberFormatException e){ 
-            JOptionPane.showMessageDialog(this, "Error: Not a number!", "ConsumidorNotNumberError", JOptionPane.ERROR_MESSAGE);
-            resultProd = false;
-        }
-
-        return resultProd && resultCons;
-
+        return num;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
