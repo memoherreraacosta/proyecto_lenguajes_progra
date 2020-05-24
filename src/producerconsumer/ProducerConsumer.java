@@ -2,15 +2,27 @@
 package producerconsumer;
 
 public class ProducerConsumer {
-
-    public static void main(String[] args) {
-        
-        
+    
+    private static GUIFrame get_frame(){
         GUIFrame frame = new GUIFrame();
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
+        
+        return frame;
+    }
+    
+    public static void main(String[] args) {
+        
+        GUIFrame frame = ProducerConsumer.get_frame();
+        boolean panel_running = true;
+        /*
+        while(panel_running){
+            if frame.get_ready(){
+                
+            }
+        }*/
         
         Buffer buffer = new Buffer();
         // Parameters for producer / consumers
@@ -24,7 +36,7 @@ public class ProducerConsumer {
             (new Producer(buffer,timeout_producer)).start();
         
         // Run consumers
-        for (int i = 0; i < nProducers; i++)
+        for (int i = 0; i < nConsumers; i++)
             (new Consumer(buffer,timeout_consumer)).start();
     }
 }
