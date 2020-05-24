@@ -1,5 +1,7 @@
 package producerconsumer;
 
+import static java.lang.Thread.sleep;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
@@ -14,7 +16,7 @@ public class ProducerConsumer {
 
         return frame;
     }
-    
+
     private static void call_pane(String text){
         JOptionPane.showMessageDialog(
             null,
@@ -25,7 +27,7 @@ public class ProducerConsumer {
     private static void stop(
                             ArrayList<Producer> producers,
                             ArrayList<Consumer> consumers)
-    { 
+    {
         while (!producers.isEmpty()) {
             producers.get(0).stop();
             producers.remove(0);
@@ -36,7 +38,7 @@ public class ProducerConsumer {
             
         }
     }
-    
+
     private static void start(
                             ArrayList<Producer> producers,
                             ArrayList<Consumer> consumers,
@@ -85,7 +87,6 @@ public class ProducerConsumer {
                     int nConsumers = frame.getConsumidores();
                     int n = frame.get_n_value();
                     int m = frame.get_m_value();
-                    
                     
                     if (n > m) {
                         call_pane("N debe de ser menor o igual que M");
