@@ -48,7 +48,7 @@ public class Buffer {
         String res = parseSchemeOp(product.charAt(1), Character.getNumericValue(product.charAt(3)), Character.getNumericValue(product.charAt(5)));
         String[] fila = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+"",res};
         this.tablaRealizado.addRow(fila);
-        this.tablaHacer.removeRow(0);
+        this.tablaHacer.removeRow(this.buffer.size());
         this.bar.setValue(this.buffer.size());
  
         notify();
