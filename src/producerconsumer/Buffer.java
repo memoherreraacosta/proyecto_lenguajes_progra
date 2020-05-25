@@ -2,42 +2,37 @@
 package producerconsumer;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
 public class Buffer {
     
-    
     public ArrayList<String> buffer;
-    
-    //Added variables
-    public int n;
+    public int buffer_size;
     public JProgressBar bar;
     public DefaultTableModel tablaHacer;
     public DefaultTableModel tablaRealizado;
     public JLabel realizadosLabel;
     public int realizados;
     
-    Buffer(int n, JProgressBar bar, DefaultTableModel tablaHacer, DefaultTableModel tablaRealizado, JLabel label) {
+    Buffer(
+            int buffer_size,
+            JProgressBar bar,
+            DefaultTableModel tablaHacer,
+            DefaultTableModel tablaRealizado,
+            JLabel label)
+    {
         this.buffer = new ArrayList<>();
-        this.n = n;
+        this.buffer_size = buffer_size;
         this.bar = bar;
         this.bar.setMinimum(0);
-        this.bar.setMaximum(n);
+        this.bar.setMaximum(buffer_size);
         this.tablaHacer = tablaHacer;
         this.tablaRealizado = tablaRealizado;
         this.realizadosLabel = label;
         this.realizados = 0;
     }
-    
-    /*Old buffer
-    Buffer(){
-        this.buffer = new ArrayList<>();
-    }
-    */
     
     synchronized String consume(int num) {
         String product = "";
@@ -46,7 +41,7 @@ public class Buffer {
             try {
                 wait();
             } catch (InterruptedException ex) {
-                Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         this.realizados++;
@@ -59,16 +54,15 @@ public class Buffer {
         this.bar.setValue(this.buffer.size());
  
         notify();
-        
         return product;
     }
     
     synchronized void produce(String product, int num) {
-        while(this.buffer.size() >= this.n) {
+        while(this.buffer.size() >= this.buffer_size) {
             try {
                 wait();
             } catch (InterruptedException ex) {
-                Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         String[] tabla = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+"",num+""};
@@ -107,12 +101,5 @@ public class Buffer {
         System.out.print(count++ + " ");
         System.out.println(string);
     }
-    
-    //Added this method
-    /*
-    public int getSize(){
-        return this.buffer.size();
-    }
-    */
     
 }

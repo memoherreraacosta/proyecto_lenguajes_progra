@@ -199,7 +199,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="rango_val_label">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Rango de Valores (n, m) | n &lt;= m"/>
+                    <Property name="text" type="java.lang.String" value="Rango de Valores (n, m) | n &lt; m"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="m_value">
@@ -300,7 +300,7 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="45" max="32767" attributes="0"/>
+                              <EmptySpace pref="52" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel8" min="-2" pref="185" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" pref="220" max="-2" attributes="0"/>
@@ -309,7 +309,10 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                              <Component id="realizados_label" min="-2" pref="156" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="realizados_label" min="-2" pref="156" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -334,7 +337,9 @@
                           <Component id="jProgressBar1" min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="realizados_label" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="25" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -455,6 +460,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Num realizados : 0"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Limpiar tabla"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
