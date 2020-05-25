@@ -61,13 +61,13 @@ public class ProducerConsumer {
         Consumer consumer;
         
         for(int i = 0; i < nProd; i++){
-            producer = new Producer(buffer, timeoutP, n, m);
+            producer = new Producer(buffer, timeoutP, n, m, i+1);
             producers.add(producer);
             producer.start();
         }
         
         for(int i = 0; i < nCons; i++){
-            consumer = new Consumer(buffer, timeoutC);
+            consumer = new Consumer(buffer, timeoutC, i+1);
             consumers.add(consumer);
             consumer.start();
         }
@@ -117,6 +117,7 @@ public class ProducerConsumer {
                         The state can change while validating the input data
                     */
                     if (frame.getState() == 1 && !this.iniciado){
+                        frame.setDefault();
                         this.iniciado = true;
                             // Run threads
                         //Only for testing

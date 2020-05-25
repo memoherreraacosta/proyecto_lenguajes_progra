@@ -10,16 +10,18 @@ public class Producer extends Thread {
     int n;
     int m;
     int timeout;
+    int num;
     //GUIFrame frame;
     //int numProducers;
     
     boolean running = true;
     
-    Producer(Buffer buffer, int timeout, int n, int m) {
+    Producer(Buffer buffer, int timeout, int n, int m, int num) {
         this.buffer = buffer;
         this.timeout = timeout;
         this.n = n;
         this.m = m;
+        this.num = num;
         //this.frame = frame;
         //this.numProducers = numProducers;
     }
@@ -50,7 +52,7 @@ public class Producer extends Thread {
         //for(int i = 0; i < this.numProducers; i++){
             schemeOp = this.buildOp();
             
-            this.buffer.produce(schemeOp);
+            this.buffer.produce(schemeOp, this.num);
             
             //Testing
             //System.out.println("Producer produced: " + product);

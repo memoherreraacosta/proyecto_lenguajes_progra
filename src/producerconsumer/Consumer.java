@@ -7,14 +7,16 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     Buffer buffer;
     int timeout;
+    int num;
     //GUIFrame frame;
     //int numConsumers;
     
     boolean running = true;
     
-    Consumer(Buffer buffer, int timeout) {
+    Consumer(Buffer buffer, int timeout, int num) {
         this.buffer = buffer;
         this.timeout = timeout;
+        this.num = num;
         //this.frame = frame;
         //this.numConsumers = numConsumers;
     }
@@ -56,7 +58,7 @@ public class Consumer extends Thread {
         //Testing
         while(this.running) {
         //for(int i = 0; i < this.numConsumers; i++){
-            schemeOp = this.buffer.consume();
+            schemeOp = this.buffer.consume(this.num);
             
             //System.out.println(schemeOp + " -> " + res + " | " + this.buffer.buffer.size());
             

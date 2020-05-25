@@ -34,7 +34,7 @@ public class Buffer {
     }
     */
     
-    synchronized String consume() {
+    synchronized String consume(int num) {
         String product = "";
         
         if(this.buffer.isEmpty()) {
@@ -46,7 +46,7 @@ public class Buffer {
         }
         product = this.buffer.remove(this.buffer.size() - 1);
         String res = parseSchemeOp(product.charAt(1), Character.getNumericValue(product.charAt(3)), Character.getNumericValue(product.charAt(5)));
-        String[] fila = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+"",res};
+        String[] fila = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+"",res, num+""};
         this.tablaRealizado.addRow(fila);
         this.tablaHacer.removeRow(this.buffer.size());
         this.bar.setValue(this.buffer.size());
@@ -56,7 +56,7 @@ public class Buffer {
         return product;
     }
     
-    synchronized void produce(String product) {
+    synchronized void produce(String product, int num) {
         if(this.buffer.size() >= this.n) {
             try {
                 wait();
@@ -64,7 +64,7 @@ public class Buffer {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        String[] tabla = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+""};
+        String[] tabla = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+"",num+""};
         this.tablaHacer.addRow(tabla);
         this.buffer.add(product);
         this.bar.setValue(this.buffer.size());

@@ -196,11 +196,11 @@ public class GUIFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Op", "Num1", "Num2"
+                "Op", "Num1", "Num2", "NProd"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -214,11 +214,11 @@ public class GUIFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Operador", "Num1", "Num2", "Resultado"
+                "Op", "Num1", "Num2", "Res", "NCon"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -462,6 +462,11 @@ public class GUIFrame extends javax.swing.JFrame {
     //Add to get progressBar
     public JProgressBar getProgressBar(){
         return jProgressBar1;
+    }
+    
+    public void setDefault(){
+        getTablaHacer().setNumRows(0);
+        getTablaRealizado().setNumRows(0);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
