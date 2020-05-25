@@ -45,7 +45,7 @@ public class Consumer extends Thread {
         int   b;
         String res;
         
-        while(this.isAlive()) {
+        while(!this.isInterrupted()) {
             
             schemeOp = this.buffer.consume();
             op = schemeOp.charAt(1);
@@ -62,6 +62,7 @@ public class Consumer extends Thread {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
     }
 
 }

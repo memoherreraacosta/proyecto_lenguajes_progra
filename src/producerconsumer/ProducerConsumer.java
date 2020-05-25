@@ -45,13 +45,15 @@ public class ProducerConsumer {
                             Buffer buffer,
                             int nProd,
                             int nCons,
+                            int n,
+                            int m,
                             int timeoutP,
                             int timeoutC)
     {
         Producer producer;
         Consumer consumer;
-        for (int i = 0; i < nProd; i++) {
-            producer = new Producer(buffer, timeoutP);
+        for (int i = 0; i < nProd ; i++) {
+            producer = new Producer(buffer, timeoutP, n, m);
             producers.add(producer);
             producer.start();
             
@@ -103,16 +105,21 @@ public class ProducerConsumer {
                             buffer,
                             nProducers,
                             nConsumers,
+                            n,
+                            m,
                             timeout_producer,
                             timeout_consumer
                         );
                         panel_running = !panel_running;
                     }
+                    if(frame.getState() == -1)
+                        call_pane("Surprise bitch");
+                    
                 } catch (NumberFormatException e) {
                     call_pane("Error al introducir un número invalido: " + e);
                     frame.setState(0);
                 } catch (Exception ex) {
-                    call_pane("WTF: " + ex);
+                    call_pane("WTF  " + ex);
                     frame.setState(0);
                 }
             }
