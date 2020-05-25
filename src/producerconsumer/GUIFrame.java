@@ -445,6 +445,7 @@ public class GUIFrame extends javax.swing.JFrame {
     }
     
     //Added methods
+    /*
     public void addTablaPorHacer(String[] fila){
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         tabla.addRow(fila);
@@ -458,6 +459,15 @@ public class GUIFrame extends javax.swing.JFrame {
     public void addTablaRealizado(String[] fila){
         DefaultTableModel tabla = (DefaultTableModel) jTable2.getModel();
         tabla.addRow(fila);
+    }
+    */
+    
+    public DefaultTableModel getTablaHacer(){
+        return (DefaultTableModel)jTable1.getModel();
+    }
+    
+    public DefaultTableModel getTablaRealizado(){
+        return (DefaultTableModel)jTable2.getModel();
     }
     
     //Add to get progressBar

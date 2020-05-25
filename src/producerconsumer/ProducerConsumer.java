@@ -2,6 +2,7 @@ package producerconsumer;
 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class ProducerConsumer {
 
@@ -47,24 +48,23 @@ public class ProducerConsumer {
                             int n,
                             int m,
                             int timeoutP,
-                            int timeoutC,
-                            GUIFrame frame)
+                            int timeoutC)
     {
         Producer producer;
         Consumer consumer;
         
-        //Only for testing
-        //for(int i = 0; i < nProd; i++){
-            producer = new Producer(buffer, timeoutP, n, m, frame, nProd);
+        for(int i = 0; i < nProd; i++){
+            producer = new Producer(buffer, timeoutP, n, m);
             producers.add(producer);
             producer.start();
-        //}
+        }
         
-        //for(int i = 0; i < nCons; i++){
-            consumer = new Consumer(buffer, timeoutC, frame, nCons);
+        for(int i = 0; i < nCons; i++){
+            consumer = new Consumer(buffer, timeoutC);
             consumers.add(consumer);
             consumer.start();
-        //}
+        }
+        
     }
 
     public static void main(String[] args) throws InterruptedException{
@@ -83,8 +83,10 @@ public class ProducerConsumer {
              */
             if (frame.getState() == 1) {
                 try {
-                    Buffer buffer = new Buffer(frame.getTamanoBuffer(), frame.getProgressBar());
-                    
+                    DefaultTableModel tablaHacer = frame.getTablaHacer();
+                    DefaultTableModel tablaRealizado = frame.getTablaRealizado();
+                    Buffer buffer = new Buffer(frame.getTamanoBuffer(), frame.getProgressBar(), tablaHacer, tablaRealizado);
+                   
                     //Old buffer
                     //Buffer buffer = new Buffer();
                     
@@ -116,13 +118,12 @@ public class ProducerConsumer {
                             n,
                             m,
                             timeout_producer,
-                            timeout_consumer,
-                            frame
+                            timeout_consumer
                         );
                         //Only for testing
-                        break;
-                        //if(frame.getState() != 1)
-                        //    break;
+                        //break;
+                        if(frame.getState() != 1)
+                            break;
                     }
                     
                 } catch (NumberFormatException e) {

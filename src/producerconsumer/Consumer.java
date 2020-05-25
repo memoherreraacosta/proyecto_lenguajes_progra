@@ -7,18 +7,19 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     Buffer buffer;
     int timeout;
-    GUIFrame frame;
-    int numConsumers;
+    //GUIFrame frame;
+    //int numConsumers;
     
     boolean running = true;
     
-    Consumer(Buffer buffer, int timeout, GUIFrame frame, int numConsumers) {
+    Consumer(Buffer buffer, int timeout) {
         this.buffer = buffer;
         this.timeout = timeout;
-        this.frame = frame;
-        this.numConsumers = numConsumers;
+        //this.frame = frame;
+        //this.numConsumers = numConsumers;
     }
     
+    /*
     private String parseSchemeOp(char op, int a, int b) {
         String res = "undefined";
             switch (op) {
@@ -41,6 +42,7 @@ public class Consumer extends Thread {
             }
         return res;
     }
+    */
     
     @Override
     public void run() {
@@ -52,17 +54,9 @@ public class Consumer extends Thread {
         String res;
         
         //Testing
-        //while(this.running) {
-        for(int i = 0; i < this.numConsumers; i++){
+        while(this.running) {
+        //for(int i = 0; i < this.numConsumers; i++){
             schemeOp = this.buffer.consume();
-            this.frame.removeTablaPorHacer(this.buffer.getSize());
-            op = schemeOp.charAt(1);
-            a  = Character.getNumericValue(schemeOp.charAt(3));  
-            b  = Character.getNumericValue(schemeOp.charAt(5));
-            
-            res = this.parseSchemeOp(op, a, b);
-            String[] fila = {schemeOp.charAt(1)+"",schemeOp.charAt(3)+"",schemeOp.charAt(5)+"",res};
-            this.frame.addTablaRealizado(fila);
             
             //System.out.println(schemeOp + " -> " + res + " | " + this.buffer.buffer.size());
             

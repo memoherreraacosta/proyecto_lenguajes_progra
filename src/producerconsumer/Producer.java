@@ -10,18 +10,18 @@ public class Producer extends Thread {
     int n;
     int m;
     int timeout;
-    GUIFrame frame;
-    int numProducers;
+    //GUIFrame frame;
+    //int numProducers;
     
     boolean running = true;
     
-    Producer(Buffer buffer, int timeout, int n, int m, GUIFrame frame, int numProducers) {
+    Producer(Buffer buffer, int timeout, int n, int m) {
         this.buffer = buffer;
         this.timeout = timeout;
         this.n = n;
         this.m = m;
-        this.frame = frame;
-        this.numProducers = numProducers;
+        //this.frame = frame;
+        //this.numProducers = numProducers;
     }
     
     private String buildOp(){
@@ -46,11 +46,10 @@ public class Producer extends Thread {
         String schemeOp;
         
         //Testing
-        //while(this.running) {
-        for(int i = 0; i < this.numProducers; i++){
+        while(this.running) {
+        //for(int i = 0; i < this.numProducers; i++){
             schemeOp = this.buildOp();
-            String[] tabla = {schemeOp.charAt(1)+"",schemeOp.charAt(3)+"",schemeOp.charAt(5)+""};
-            this.frame.addTablaPorHacer(tabla);
+            
             this.buffer.produce(schemeOp);
             
             //Testing
