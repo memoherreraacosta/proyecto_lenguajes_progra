@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 import javax.swing.event.MouseInputListener;
 import javax.swing.table.DefaultTableModel;
 
@@ -457,6 +458,11 @@ public class GUIFrame extends javax.swing.JFrame {
     public void addTablaRealizado(String[] fila){
         DefaultTableModel tabla = (DefaultTableModel) jTable2.getModel();
         tabla.addRow(fila);
+    }
+    
+    //Add to get progressBar
+    public JProgressBar getProgressBar(){
+        return jProgressBar1;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

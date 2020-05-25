@@ -83,7 +83,11 @@ public class ProducerConsumer {
              */
             if (frame.getState() == 1) {
                 try {
-                    Buffer buffer = new Buffer();
+                    Buffer buffer = new Buffer(frame.getTamanoBuffer(), frame.getProgressBar());
+                    
+                    //Old buffer
+                    //Buffer buffer = new Buffer();
+                    
                     // Parameters for producer / consumers
                     int timeout_producer = frame.getEsperaProductor();
                     int timeout_consumer = frame.getEsperaConsumidor();
