@@ -82,6 +82,7 @@ public class ProducerConsumer {
         
         ArrayList<Producer> producers = new ArrayList<>();
         ArrayList<Consumer> consumers = new ArrayList<>();
+        boolean threads_running = false;
         
         while (panel_running) {
             /*

@@ -57,7 +57,7 @@ public class Buffer {
         return product;
     }
     
-    synchronized void produce(String product, int num) {
+    synchronized void produce(String product) {
         while(this.buffer.size() >= this.buffer_size) {
             try {
                 wait();
@@ -65,7 +65,7 @@ public class Buffer {
                 //Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        String[] tabla = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+"",num+""};
+        String[] tabla = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+""};
         this.tablaHacer.addRow(tabla);
         this.buffer.add(product);
         this.bar.setValue(this.buffer.size());
