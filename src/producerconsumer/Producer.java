@@ -10,6 +10,7 @@ public class Producer extends Thread {
     int n;
     int m;
     int timeout;
+    boolean running = true;
     
     Producer(Buffer buffer, int timeout, int n, int m) {
         this.buffer = buffer;
@@ -38,7 +39,7 @@ public class Producer extends Thread {
     public void run() {
         System.out.println("Running Producer...");
         String schemeOp;
-        while(!this.isInterrupted()) {
+        while(this.running) {
             schemeOp = this.buildOp();
             this.buffer.produce(schemeOp);
             //System.out.println("Producer produced: " + product);

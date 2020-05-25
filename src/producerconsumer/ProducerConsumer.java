@@ -28,12 +28,13 @@ public class ProducerConsumer {
     {
         while (!producers.isEmpty()) {
             producers.get(0).interrupt();
+            producers.get(0).running = false;
             producers.remove(0);
         }
         while (!consumers.isEmpty()) {
             consumers.get(0).interrupt();
+            consumers.get(0).running = false;
             consumers.remove(0);
-            
         }
     }
 
@@ -50,7 +51,6 @@ public class ProducerConsumer {
     {
         Producer producer;
         Consumer consumer;
-        
         for (int i = 0; i < nProd ; i++) {
             producer = new Producer(buffer, timeoutP, n, m);
             producers.add(producer);
@@ -109,12 +109,14 @@ public class ProducerConsumer {
                             timeout_producer,
                             timeout_consumer
                         );
-                        
+                        if(frame.getState() != 1)
+                            break;
                     }
                     
                 } catch (NumberFormatException e) {
                     call_pane("Error al introducir un número invalido: " + e);
                     frame.setState(0);
+                    
                 } catch (Exception ex) {
                     call_pane("WTF  " + ex);
                     frame.setState(0);
@@ -129,7 +131,7 @@ public class ProducerConsumer {
                 );
                 frame.setVisible(false);
                 frame.dispose();
-                panel_running = !panel_running;
+                panel_running = false;
                 call_pane("Process finished");
             }
             Thread.sleep(200);
