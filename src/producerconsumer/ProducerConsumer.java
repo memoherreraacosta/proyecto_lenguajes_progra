@@ -1,7 +1,5 @@
 package producerconsumer;
 
-import static java.lang.Thread.sleep;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
@@ -29,13 +27,14 @@ public class ProducerConsumer {
                             ArrayList<Consumer> consumers)
     {
         while (!producers.isEmpty()) {
-            producers.get(0).stop();
+            producers.get(0).interrupt();
+            producers.get(0).running = false;
             producers.remove(0);
         }
         while (!consumers.isEmpty()) {
-            consumers.get(0).stop();
+            consumers.get(0).interrupt();
+            consumers.get(0).running = false;
             consumers.remove(0);
-            
         }
     }
 
@@ -45,13 +44,15 @@ public class ProducerConsumer {
                             Buffer buffer,
                             int nProd,
                             int nCons,
+                            int n,
+                            int m,
                             int timeoutP,
                             int timeoutC)
     {
         Producer producer;
         Consumer consumer;
-        for (int i = 0; i < nProd; i++) {
-            producer = new Producer(buffer, timeoutP);
+        for (int i = 0; i < nProd ; i++) {
+            producer = new Producer(buffer, timeoutP, n, m);
             producers.add(producer);
             producer.start();
             
@@ -103,28 +104,34 @@ public class ProducerConsumer {
                             buffer,
                             nProducers,
                             nConsumers,
+                            n,
+                            m,
                             timeout_producer,
                             timeout_consumer
                         );
-                        panel_running = !panel_running;
+                        if(frame.getState() != 1)
+                            break;
                     }
+                    
                 } catch (NumberFormatException e) {
                     call_pane("Error al introducir un número invalido: " + e);
                     frame.setState(0);
+                    
                 } catch (Exception ex) {
-                    call_pane("WTF: " + ex);
+                    call_pane("WTF  " + ex);
                     frame.setState(0);
                 }
             }
             if (frame.getState() == -1) {
                 // Stop and close
+                call_pane("Stopping process, removing threads");
                 stop(
                     producers,
                     consumers
                 );
                 frame.setVisible(false);
                 frame.dispose();
-                panel_running = !panel_running;
+                panel_running = false;
                 call_pane("Process finished");
             }
             Thread.sleep(200);

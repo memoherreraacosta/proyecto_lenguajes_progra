@@ -12,6 +12,8 @@
 package producerconsumer;
 
 import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
 
@@ -424,6 +426,10 @@ public class GUIFrame extends javax.swing.JFrame {
             this.setState(0);
         }
         return num;
+    }
+    
+    public void throw_exception() throws InterruptedException{
+        throw new InterruptedException();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     Buffer buffer;
     int timeout;
+    boolean running = true;
     
     Consumer(Buffer buffer, int timeout) {
         this.buffer = buffer;
@@ -45,7 +46,7 @@ public class Consumer extends Thread {
         int   b;
         String res;
         
-        while(this.isAlive()) {
+        while(this.running) {
             
             schemeOp = this.buffer.consume();
             op = schemeOp.charAt(1);
@@ -62,6 +63,7 @@ public class Consumer extends Thread {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
     }
 
 }
