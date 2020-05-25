@@ -2,8 +2,17 @@ package producerconsumer;
 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 
 public class ProducerConsumer {
+    
+    boolean threads_running;
+    
+    public ProducerConsumer() throws InterruptedException{
+        this.threads_running = false;
+        runPanel();
+    }
 
     private static GUIFrame get_frame() {
         GUIFrame frame = new GUIFrame();
@@ -22,7 +31,35 @@ public class ProducerConsumer {
         );
     }
 
-    private static void stop(
+    private static void start(
+                            ArrayList<Producer> producers,
+                            ArrayList<Consumer> consumers,
+                            Buffer buffer,
+                            int nProd,
+                            int nCons,
+                            int n,
+                            int m,
+                            int timeoutP,
+                            int timeoutC)
+    {
+        Producer producer;
+        Consumer consumer;
+        
+        for(int i = 0; i < nProd; i++){
+            producer = new Producer(buffer, timeoutP, n, m, i+1);
+            producers.add(producer);
+            producer.start();
+        }
+        
+        for(int i = 0; i < nCons; i++){
+            consumer = new Consumer(buffer, timeoutC, i+1);
+            consumers.add(consumer);
+            consumer.start();
+        }
+        
+    }
+    
+        private static void stop(
                             ArrayList<Producer> producers,
                             ArrayList<Consumer> consumers)
     {
@@ -37,37 +74,12 @@ public class ProducerConsumer {
             consumers.remove(0);
         }
     }
-
-    private static void start(
-                            ArrayList<Producer> producers,
-                            ArrayList<Consumer> consumers,
-                            Buffer buffer,
-                            int nProd,
-                            int nCons,
-                            int n,
-                            int m,
-                            int timeoutP,
-                            int timeoutC)
-    {
-        Producer producer;
-        Consumer consumer;
-        for (int i = 0; i < nProd ; i++) {
-            producer = new Producer(buffer, timeoutP, n, m);
-            producers.add(producer);
-            producer.start();
-            
-        }
-        for (int i = 0; i < nCons; i++) {
-            consumer = new Consumer(buffer, timeoutC);
-            consumers.add(consumer);
-            consumer.start();
-        }
-    }
-
-    public static void main(String[] args) throws InterruptedException{
-
+    
+    private void runPanel() throws InterruptedException{
+        
         GUIFrame frame = ProducerConsumer.get_frame();
         boolean panel_running = true;
+        
         ArrayList<Producer> producers = new ArrayList<>();
         ArrayList<Consumer> consumers = new ArrayList<>();
         boolean threads_running = false;
@@ -81,8 +93,16 @@ public class ProducerConsumer {
              */
             if (frame.getState() == 1) {
                 try {
-                    Buffer buffer = new Buffer();
-                    // Parameters for producer / consumers
+                    DefaultTableModel tablaHacer = frame.getTablaHacer();
+                    DefaultTableModel tablaRealizado = frame.getTablaRealizado();
+                    JLabel labelRealizados = frame.getLabelRealizados();
+                    Buffer buffer = new Buffer(
+                            frame.getTamanoBuffer(),
+                            frame.getProgressBar(),
+                            tablaHacer, tablaRealizado,
+                            labelRealizados
+                    );
+               
                     int timeout_producer = frame.getEsperaProductor();
                     int timeout_consumer = frame.getEsperaConsumidor();
                     int nProducers = frame.getProductores();
@@ -90,15 +110,15 @@ public class ProducerConsumer {
                     int n = frame.get_n_value();
                     int m = frame.get_m_value();
                     
-                    if (n > m) {
-                        call_pane("N debe de ser menor o igual que M");
+                    if (n >= m) {
+                        call_pane("M debe de ser menor o igual que N");
                         frame.setState(0);
                     }
                     /*
                         The state can change while validating the input data
                     */
-                    if (!threads_running){
-                            // Run threads
+                    if (frame.getState() == 1 && !this.threads_running){
+                        frame.setDefault();
                         start(
                             producers,
                             consumers,
@@ -110,12 +130,13 @@ public class ProducerConsumer {
                             timeout_producer,
                             timeout_consumer
                         );
-                        threads_running = !threads_running;
+                        this.threads_running = !this.threads_running;
                         if(frame.getState() != 1)
                             break;
                     }
                     
                 } catch (NumberFormatException e) {
+                    panel_running = true;
                     call_pane("Error al introducir un número invalido: " + e);
                     frame.setState(0);
                     
@@ -131,14 +152,15 @@ public class ProducerConsumer {
                     producers,
                     consumers
                 );
-                threads_running = false;
-                frame.setVisible(false);
-                frame.dispose();
-                panel_running = false;
+                frame.setState(0);
                 call_pane("Process finished");
+                this.threads_running = false;
             }
             Thread.sleep(200);
         }
     }
 
+    public static void main(String[] args) throws InterruptedException{
+        ProducerConsumer init = new ProducerConsumer();
+    }
 }

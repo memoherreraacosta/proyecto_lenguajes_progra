@@ -2,21 +2,22 @@
 package producerconsumer;
 
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Producer extends Thread {
     Buffer buffer;
     int n;
     int m;
     int timeout;
+    int num;
+    
     boolean running = true;
     
-    Producer(Buffer buffer, int timeout, int n, int m) {
+    Producer(Buffer buffer, int timeout, int n, int m, int num) {
         this.buffer = buffer;
         this.timeout = timeout;
         this.n = n;
         this.m = m;
+        this.num = num;
     }
     
     private String buildOp(){
@@ -39,16 +40,16 @@ public class Producer extends Thread {
     public void run() {
         System.out.println("Running Producer...");
         String schemeOp;
+        
         while(this.running) {
             schemeOp = this.buildOp();
-            this.buffer.produce(schemeOp);
-            //System.out.println("Producer produced: " + product);
-            //Buffer.print("Producer produced: " + schemeOp);
+            
+            this.buffer.produce(schemeOp, this.num);
             
             try {
                 Thread.sleep(this.timeout);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
