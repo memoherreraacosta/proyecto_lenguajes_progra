@@ -1,7 +1,5 @@
 package producerconsumer;
 
-import static java.lang.Thread.sleep;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
