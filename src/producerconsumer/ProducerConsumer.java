@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class ProducerConsumer {
+    
+    boolean iniciado;
+    
+    public ProducerConsumer() throws InterruptedException{
+        this.iniciado = false;
+        runPanel();
+    }
 
     private static GUIFrame get_frame() {
         GUIFrame frame = new GUIFrame();
@@ -68,7 +75,11 @@ public class ProducerConsumer {
     }
 
     public static void main(String[] args) throws InterruptedException{
-
+        ProducerConsumer nuevo = new ProducerConsumer();
+    }
+    
+    private void runPanel() throws InterruptedException{
+        
         GUIFrame frame = ProducerConsumer.get_frame();
         boolean panel_running = true;
         ArrayList<Producer> producers = new ArrayList<>();
@@ -105,10 +116,11 @@ public class ProducerConsumer {
                     /*
                         The state can change while validating the input data
                     */
-                    if (frame.getState() == 1){
+                    if (frame.getState() == 1 && !this.iniciado){
+                        this.iniciado = true;
                             // Run threads
                         //Only for testing
-                        panel_running = false;
+                        //panel_running = false;
                         start(
                             producers,
                             consumers,
@@ -143,10 +155,12 @@ public class ProducerConsumer {
                     producers,
                     consumers
                 );
-                frame.setVisible(false);
-                frame.dispose();
-                panel_running = false;
+                //frame.setVisible(false);
+                //frame.dispose();
+                frame.setState(0);
+                //panel_running = false;
                 call_pane("Process finished");
+                this.iniciado = false;
             }
             Thread.sleep(200);
         }

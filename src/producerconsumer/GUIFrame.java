@@ -23,6 +23,8 @@ import javax.swing.table.DefaultTableModel;
 public class GUIFrame extends javax.swing.JFrame {
     
     public int state = 0;
+    public boolean init = false;
+    
     /**
      * Creates new form GUIFrame
      */
@@ -322,13 +324,14 @@ public class GUIFrame extends javax.swing.JFrame {
     private void button_stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_stopActionPerformed
         // TODO add your handling code here:
         System.out.println("parar");
-        this.setState(-1);
+        this.init = true;
+        setState(-1);
     }//GEN-LAST:event_button_stopActionPerformed
 
     private void button_initActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_initActionPerformed
         // TODO add your handling code here:
         System.out.println("iniciar");
-        this.setState(1);
+        setState(1);
     }//GEN-LAST:event_button_initActionPerformed
 
     /**
@@ -398,6 +401,10 @@ public class GUIFrame extends javax.swing.JFrame {
         return this.state;
     }
     
+    public boolean getInit(){
+        return this.init;
+    }
+    
     public void setState(int state){
         this.state = state;
         button_init.setEnabled(state == 0);
@@ -443,24 +450,6 @@ public class GUIFrame extends javax.swing.JFrame {
     public void throw_exception() throws InterruptedException{
         throw new InterruptedException();
     }
-    
-    //Added methods
-    /*
-    public void addTablaPorHacer(String[] fila){
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.addRow(fila);
-    }
-    
-    public void removeTablaPorHacer(int i){
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.removeRow(i);
-    }
-    
-    public void addTablaRealizado(String[] fila){
-        DefaultTableModel tabla = (DefaultTableModel) jTable2.getModel();
-        tabla.addRow(fila);
-    }
-    */
     
     public DefaultTableModel getTablaHacer(){
         return (DefaultTableModel)jTable1.getModel();
