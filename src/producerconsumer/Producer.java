@@ -35,8 +35,6 @@ public class Producer extends Thread {
         char op = ops.charAt(r.nextInt(4));
         char n1 = nums.charAt(r.nextInt(this.n, this.m));
         char n2 = nums.charAt(r.nextInt(this.n, this.m));
-        String[] tabla = {op+"",n1+"",n2+"",""};
-        this.frame.addTabla(tabla);
         String res = "("+op + " " + n1 + " " + n2 + ")";
         
         return res;
@@ -46,10 +44,16 @@ public class Producer extends Thread {
     public void run() {
         System.out.println("Running Producer...");
         String schemeOp;
+        
+        //Testing
         //while(this.running) {
         for(int i = 0; i < this.numProducers; i++){
             schemeOp = this.buildOp();
+            String[] tabla = {schemeOp.charAt(1)+"",schemeOp.charAt(3)+"",schemeOp.charAt(5)+""};
+            this.frame.addTablaPorHacer(tabla);
             this.buffer.produce(schemeOp);
+            
+            //Testing
             //System.out.println("Producer produced: " + product);
             //Buffer.print("Producer produced: " + schemeOp);
             

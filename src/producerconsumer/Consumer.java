@@ -51,17 +51,18 @@ public class Consumer extends Thread {
         int   b;
         String res;
         
+        //Testing
         //while(this.running) {
         for(int i = 0; i < this.numConsumers; i++){
             schemeOp = this.buffer.consume();
-            this.frame.removeTabla(this.buffer.getSize());
+            this.frame.removeTablaPorHacer(this.buffer.getSize());
             op = schemeOp.charAt(1);
             a  = Character.getNumericValue(schemeOp.charAt(3));  
             b  = Character.getNumericValue(schemeOp.charAt(5));
             
             res = this.parseSchemeOp(op, a, b);
             String[] fila = {schemeOp.charAt(1)+"",schemeOp.charAt(3)+"",schemeOp.charAt(5)+"",res};
-            this.frame.addTabla2(fila);
+            this.frame.addTablaRealizado(fila);
             
             //System.out.println(schemeOp + " -> " + res + " | " + this.buffer.buffer.size());
             

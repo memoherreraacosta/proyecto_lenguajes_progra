@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 public class Buffer {
     
+    
     public ArrayList<String> buffer;
     
     Buffer() {
@@ -48,6 +49,7 @@ public class Buffer {
         System.out.println(string);
     }
     
+    //Added this method
     public int getSize(){
         return this.buffer.size();
     }

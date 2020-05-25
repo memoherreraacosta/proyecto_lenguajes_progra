@@ -53,13 +53,18 @@ public class ProducerConsumer {
         Producer producer;
         Consumer consumer;
         
-        producer = new Producer(buffer, timeoutP, n, m, frame, nProd);
-        producers.add(producer);
-        producer.start();
-            
-        consumer = new Consumer(buffer, timeoutC, frame, nCons);
-        consumers.add(consumer);
-        consumer.start();
+        //Only for testing
+        //for(int i = 0; i < nProd; i++){
+            producer = new Producer(buffer, timeoutP, n, m, frame, nProd);
+            producers.add(producer);
+            producer.start();
+        //}
+        
+        //for(int i = 0; i < nCons; i++){
+            consumer = new Consumer(buffer, timeoutC, frame, nCons);
+            consumers.add(consumer);
+            consumer.start();
+        //}
     }
 
     public static void main(String[] args) throws InterruptedException{
@@ -96,6 +101,8 @@ public class ProducerConsumer {
                     */
                     if (frame.getState() == 1){
                             // Run threads
+                        //Only for testing
+                        panel_running = false;
                         start(
                             producers,
                             consumers,
@@ -108,11 +115,14 @@ public class ProducerConsumer {
                             timeout_consumer,
                             frame
                         );
-                        if(frame.getState() != 1)
-                            break;
+                        //Only for testing
+                        break;
+                        //if(frame.getState() != 1)
+                        //    break;
                     }
                     
                 } catch (NumberFormatException e) {
+                    panel_running = true;
                     call_pane("Error al introducir un número invalido: " + e);
                     frame.setState(0);
                     
