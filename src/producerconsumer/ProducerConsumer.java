@@ -70,6 +70,7 @@ public class ProducerConsumer {
         boolean panel_running = true;
         ArrayList<Producer> producers = new ArrayList<>();
         ArrayList<Consumer> consumers = new ArrayList<>();
+        boolean threads_running = false;
         
         while (panel_running) {
             /*
@@ -96,7 +97,7 @@ public class ProducerConsumer {
                     /*
                         The state can change while validating the input data
                     */
-                    if (frame.getState() == 1){
+                    if (!threads_running){
                             // Run threads
                         start(
                             producers,
@@ -109,6 +110,7 @@ public class ProducerConsumer {
                             timeout_producer,
                             timeout_consumer
                         );
+                        threads_running = !threads_running;
                         if(frame.getState() != 1)
                             break;
                     }
@@ -129,6 +131,7 @@ public class ProducerConsumer {
                     producers,
                     consumers
                 );
+                threads_running = false;
                 frame.setVisible(false);
                 frame.dispose();
                 panel_running = false;
