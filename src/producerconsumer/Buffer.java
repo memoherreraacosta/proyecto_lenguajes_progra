@@ -42,7 +42,7 @@ public class Buffer {
     synchronized String consume(int num) {
         String product = "";
         
-        if(this.buffer.isEmpty()) {
+        while(this.buffer.isEmpty()) {
             try {
                 wait();
             } catch (InterruptedException ex) {
@@ -64,7 +64,7 @@ public class Buffer {
     }
     
     synchronized void produce(String product, int num) {
-        if(this.buffer.size() >= this.n) {
+        while(this.buffer.size() >= this.n) {
             try {
                 wait();
             } catch (InterruptedException ex) {
