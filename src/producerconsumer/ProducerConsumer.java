@@ -2,6 +2,7 @@ package producerconsumer;
 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 public class ProducerConsumer {
@@ -96,7 +97,8 @@ public class ProducerConsumer {
                 try {
                     DefaultTableModel tablaHacer = frame.getTablaHacer();
                     DefaultTableModel tablaRealizado = frame.getTablaRealizado();
-                    Buffer buffer = new Buffer(frame.getTamanoBuffer(), frame.getProgressBar(), tablaHacer, tablaRealizado);
+                    JLabel labelRealizados = frame.getLabelRealizados();
+                    Buffer buffer = new Buffer(frame.getTamanoBuffer(), frame.getProgressBar(), tablaHacer, tablaRealizado, labelRealizados);
                    
                     //Old buffer
                     //Buffer buffer = new Buffer();

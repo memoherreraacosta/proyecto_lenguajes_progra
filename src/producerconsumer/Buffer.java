@@ -4,6 +4,7 @@ package producerconsumer;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,8 +18,10 @@ public class Buffer {
     public JProgressBar bar;
     public DefaultTableModel tablaHacer;
     public DefaultTableModel tablaRealizado;
+    public JLabel realizadosLabel;
+    public int realizados;
     
-    Buffer(int n, JProgressBar bar, DefaultTableModel tablaHacer, DefaultTableModel tablaRealizado) {
+    Buffer(int n, JProgressBar bar, DefaultTableModel tablaHacer, DefaultTableModel tablaRealizado, JLabel label) {
         this.buffer = new ArrayList<>();
         this.n = n;
         this.bar = bar;
@@ -26,6 +29,8 @@ public class Buffer {
         this.bar.setMaximum(n);
         this.tablaHacer = tablaHacer;
         this.tablaRealizado = tablaRealizado;
+        this.realizadosLabel = label;
+        this.realizados = 0;
     }
     
     /*Old buffer
@@ -44,6 +49,8 @@ public class Buffer {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        this.realizados++;
+        this.realizadosLabel.setText("Num realizados : "+this.realizados+"");
         product = this.buffer.remove(this.buffer.size() - 1);
         String res = parseSchemeOp(product.charAt(1), Character.getNumericValue(product.charAt(3)), Character.getNumericValue(product.charAt(5)));
         String[] fila = {product.charAt(1)+"",product.charAt(3)+"",product.charAt(5)+"",res, num+""};
