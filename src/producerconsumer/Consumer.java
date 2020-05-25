@@ -7,11 +7,16 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     Buffer buffer;
     int timeout;
+    GUIFrame frame;
+    int numConsumers;
+    
     boolean running = true;
     
-    Consumer(Buffer buffer, int timeout) {
+    Consumer(Buffer buffer, int timeout, GUIFrame frame, int numConsumers) {
         this.buffer = buffer;
         this.timeout = timeout;
+        this.frame = frame;
+        this.numConsumers = numConsumers;
     }
     
     private String parseSchemeOp(char op, int a, int b) {
@@ -46,16 +51,19 @@ public class Consumer extends Thread {
         int   b;
         String res;
         
-        while(this.running) {
-            
+        //while(this.running) {
+        for(int i = 0; i < this.numConsumers; i++){
             schemeOp = this.buffer.consume();
+            this.frame.removeTabla(this.buffer.getSize());
             op = schemeOp.charAt(1);
             a  = Character.getNumericValue(schemeOp.charAt(3));  
             b  = Character.getNumericValue(schemeOp.charAt(5));
             
             res = this.parseSchemeOp(op, a, b);
+            String[] fila = {schemeOp.charAt(1)+"",schemeOp.charAt(3)+"",schemeOp.charAt(5)+"",res};
+            this.frame.addTabla2(fila);
             
-            System.out.println(schemeOp + " -> " + res + " | " + this.buffer.buffer.size());
+            //System.out.println(schemeOp + " -> " + res + " | " + this.buffer.buffer.size());
             
             try {
                 Thread.sleep(this.timeout);

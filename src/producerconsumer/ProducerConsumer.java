@@ -47,21 +47,19 @@ public class ProducerConsumer {
                             int n,
                             int m,
                             int timeoutP,
-                            int timeoutC)
+                            int timeoutC,
+                            GUIFrame frame)
     {
         Producer producer;
         Consumer consumer;
-        for (int i = 0; i < nProd ; i++) {
-            producer = new Producer(buffer, timeoutP, n, m);
-            producers.add(producer);
-            producer.start();
+        
+        producer = new Producer(buffer, timeoutP, n, m, frame, nProd);
+        producers.add(producer);
+        producer.start();
             
-        }
-        for (int i = 0; i < nCons; i++) {
-            consumer = new Consumer(buffer, timeoutC);
-            consumers.add(consumer);
-            consumer.start();
-        }
+        consumer = new Consumer(buffer, timeoutC, frame, nCons);
+        consumers.add(consumer);
+        consumer.start();
     }
 
     public static void main(String[] args) throws InterruptedException{
@@ -107,7 +105,8 @@ public class ProducerConsumer {
                             n,
                             m,
                             timeout_producer,
-                            timeout_consumer
+                            timeout_consumer,
+                            frame
                         );
                         if(frame.getState() != 1)
                             break;

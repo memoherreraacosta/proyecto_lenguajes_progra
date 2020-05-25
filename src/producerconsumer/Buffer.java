@@ -48,4 +48,8 @@ public class Buffer {
         System.out.println(string);
     }
     
+    public int getSize(){
+        return this.buffer.size();
+    }
+    
 }

@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
+import javax.swing.table.DefaultTableModel;
 
 
 public class GUIFrame extends javax.swing.JFrame {
@@ -153,7 +154,7 @@ public class GUIFrame extends javax.swing.JFrame {
                     .addComponent(cantidad_label))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(productor_cantidad_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(productor_tiempo_espera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(productores_label))
@@ -208,9 +209,17 @@ public class GUIFrame extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Operador", "Num1", "Num2", "Resultado"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jLabel7.setText("Tareas por hacer");
@@ -430,6 +439,21 @@ public class GUIFrame extends javax.swing.JFrame {
     
     public void throw_exception() throws InterruptedException{
         throw new InterruptedException();
+    }
+    
+    public void addTabla(String[] fila){
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        tabla.addRow(fila);
+    }
+    
+    public void removeTabla(int i){
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        tabla.removeRow(i);
+    }
+    
+    public void addTabla2(String[] fila){
+        DefaultTableModel tabla = (DefaultTableModel) jTable2.getModel();
+        tabla.addRow(fila);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
