@@ -23,8 +23,8 @@ Programa Productor/Consumidor.
 
 Ejecución en diferentes hilos + GUI para entradas/salidas.
 
+-----------------
 ##### ENTRADAS:
-------------------
 - Número productores (1 - 10).
 
 - Número consumidores (1 - 10).
