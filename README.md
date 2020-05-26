@@ -1,5 +1,5 @@
 # Proyecto de programacion concurrente y paralela
-
+=================================================
 ## Materia: Lenguajes de programación
 
 ## Equipo: Los Peruanos 🇵🇪
@@ -24,7 +24,7 @@ Programa Productor/Consumidor.
 Ejecución en diferentes hilos + GUI para entradas/salidas.
 
 ##### ENTRADAS:
-
+===================
 - Número productores (1 - 10).
 
 - Número consumidores (1 - 10).
